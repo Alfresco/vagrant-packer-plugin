@@ -3,8 +3,9 @@ require File.expand_path('../lib/vagrant-packer-plugin/version', __FILE__)
 Gem::Specification.new do |spec|
   spec.name          = "vagrant-packer-plugin"
   spec.version       = VagrantPlugins::PackerBuild::VERSION
-  spec.authors       = ["Enzo Rivello"]
+  spec.authors       = ["Enzo Rivello", "Maurizio Pillitu"]
   spec.email         = ["enzo.rivello@alfresco.com"]
+  spec.homepage      = "https://github.com/alfresco/vagrant-packer-plugin"
 
   spec.summary       = %q{Write a short summary, because Rubygems requires one.}
   spec.description   = %q{Write a longer description or delete this line.}
