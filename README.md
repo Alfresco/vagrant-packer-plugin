@@ -4,29 +4,41 @@
 Vagrant Packer plugin allows to compose Packer templates and run them using vagrant and `Vagrantfile`; it also helps using Chef as provisioner.
 
 ## Install
-```
-vagrant plugin install vagrant-packer-plugin
-```
-
-## Build
-- Install [Vagrant](https://www.vagrantup.com/downloads.html)
+- Install [Vagrant(1.8.1+)](https://www.vagrantup.com/downloads.html)
 - Install [Packer (0.8.6+)](https://www.packer.io/downloads.html)
-- Clone this repository
-- From inside this folder, type:
-```
-rm Gemfile.lock ; bundle ; rake build ; vagrant plugin install pkg/vagrant-packer-plugin-0.8.0.gem
-```
+- `vagrant plugin install vagrant-packer-plugin`
 
-## Use
-Define the following `Vagrantfile` and run `vagrant packer-build` from the same folder
+## Configure
+Define the following `Vagrantfile`
+
 ```
 Vagrant.configure("2") do |config|
-  config.packer_build.instance_templates = ["instance1.json","instance2.json"]
+  # Mandatory Vagrant Packer Plugin configuration
+  config.packer_build.instance_templates = ["<instance_template_json_path>"]
+  
+  #Optional Chef provisioning configuration
+  config.packer_build.cookbooks_url = "<berks_generated_cookbooks_tar_gz_url>"
+  
+  #Alternative for Chef cookbooks configuration (using Berkshelf)
+  config.packer_build.berksfile = "<berksfile_path>"
+  
+  #Chef Databags configuration
+  config.packer_build.databags_url = "<databags_tar_gz_url>"
+  config.packer_build.databags_username = "<databags_username>"
+  config.packer_build.databags_password = "<databags_password>"
   config.packer_build.ks_template = "https://raw.githubusercontent.com/Alfresco/alfresco-spk/master/ks/ks-centos.cfg"
 end
 ```
 
+
+## Run
+`vagrant packer-build` from the same folder of your `Vagrantfile`.
+
 Type `vagrant packer-build -h` for more info on configuration.
+
+## Build
+- Clone this repository
+- `rm Gemfile.lock ; bundle ; rake build ; vagrant plugin install pkg/vagrant-packer-plugin-0.8.0.gem`
 
 ## Contribute
 
