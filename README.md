@@ -14,7 +14,7 @@ vagrant plugin install vagrant-packer-plugin
 - Clone this repository
 - From inside this folder, type:
 ```
-rm Gemfile.lock ; bundle ; rake build ; vagrant plugin install pkg/vagrant-packer-plugin-0.5.0.gem
+rm Gemfile.lock ; bundle ; rake build ; vagrant plugin install pkg/vagrant-packer-plugin-0.8.0.gem
 ```
 
 ## Use
@@ -27,3 +27,11 @@ end
 ```
 
 Type `vagrant packer-build -h` for more info on configuration.
+
+## Contribute
+
+- Fork this project
+- Code/build your feature
+- Open Pull Requests only to *develop* please, as we want master to be the release branch
+
+
